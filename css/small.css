@@ -1,0 +1,109 @@
+html {
+	background-position: 0px 60px; /* larger 60px left for blue top padding, so more room for large hamburger :D; */
+}
+
+/*h2 {
+	font-size: 4vw;
+	letter-spacing: 1px;
+	margin-top: 0px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+*/
+.padding-top {
+	height: 60px;
+	position: fixed; /* top blue bar w/ hamburger will stay at top of screen despite scroll */
+}
+
+.col.padding-bottom {
+	/* background scooted down 20px (60px mobile) so that blue top bar could precede hexagon design, 
+	need to move bottom blue bar down to cover the extra white background */
+	top: 60px;		
+}
+
+#main-nav .material-icons {
+	font-size: 30px; 	/* make hamburger icon bigger */
+	position: fixed;	/* hamburger will stay at top of screen despite scroll */
+	top: 0px;
+}
+
+/* "content-top" is upcoming dates section + wscs general info section (CMU logo, w@scs, mission) */
+.content-top {
+	margin-top: 200px; /* large margin so that text doesn't start on top of hexagon design */
+	text-align: center;
+}
+
+#dates {
+	margin-top: 0px;
+}
+.cmu-logo {
+	height: 25px;
+} 
+
+.event {
+	/*border-bottom: 1px solid;*/
+	padding: 10px 0px;
+}
+
+hr {
+	border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+}
+
+.section-divider hr {
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+}
+
+.image {
+	width: 70%;
+	height: 30vw;
+}
+
+.post {
+	text-align: center;
+	margin-bottom: 11px;
+	margin-top: 16px;
+}
+
+.description {
+	display: none;
+}
+
+.button {
+	display: none;
+}
+
+.section-divider {
+	margin: 30px 0px 44px 0px;
+}
+
+/* there's no distinction between featured and regular stories on mobile */
+
+.row.news-section {
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+h3 {
+	letter-spacing: 1px;
+	font-size: 1.3rem;
+	margin: 7px;
+	font-weight: 600;
+}
+
+h4 {
+	letter-spacing: .2px;
+	font-size: .8rem;
+	font-weight: 200;
+}
+
+@media (max-width: 350px) { 
+	h1 {
+		font-size: 2.3rem;
+	}
+
+	h2 {
+		font-size: 1.7rem;
+	}
+}

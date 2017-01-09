@@ -1,0 +1,116 @@
+html {
+	background: url(../img/wscs_pattern.png) no-repeat;
+	background-size: 400px;
+	color: #00294b;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* h1 used for W@SCS title, h2 for mobile headings, h3 for featured news story title, 
+h4 for featured news story author, p for mission + featured news story description, 
+h5 for regular news story title, h6 for regular news story author */
+
+h1, h2, h4, h6 {
+	text-transform: uppercase;
+	margin: 0;
+}
+
+h1 {
+	font-weight: 200;
+	letter-spacing: 3.5px;
+	font-size: 3.1rem;
+	margin: 0px;
+}
+
+h2 {
+	font-weight: 200;
+	letter-spacing: .5px;
+	font-size: 2.5rem;
+}
+
+h3 {
+	letter-spacing: 1px;
+	font-size: 1.5rem;
+	margin: 7px;
+	font-weight: 600;
+}
+
+h4 {
+	letter-spacing: .2px;
+	font-size: .9rem;
+	font-weight: 200;
+}
+
+h5 {
+	letter-spacing: 1px;
+	font-size: 1.3rem;
+	margin: 7px;
+	font-weight: 600;
+}
+
+h6 {
+	letter-spacing: .2px;
+	font-size: .8rem;
+	font-weight: 200;
+}
+
+p {
+	color: #46524e;
+}
+
+#dates {
+	font-size: 14px;
+}
+
+.padding-top {
+	background-color: #00294b;
+}
+
+.col.padding-bottom {
+	background-color: #00294b;
+	height: 80px;
+	position: relative;		
+}
+
+#main-nav {
+	background:rgba(0,0,0,0);
+}
+
+#main-nav ul li a{
+	color: #00294b;
+	font-weight: 500;
+	font-size: 17px;
+}
+
+.image, .news {
+	display: inline-block;
+	text-align: center; 
+}
+
+.news {
+  	padding: 0px 10px;
+  	width: 100%;
+}
+
+.image {
+	background-image: url(../img/feature.jpeg);
+	background-size: cover;
+}
+
+.button {
+	background-color: #00294b;
+	font-size: .9rem;
+	font-weight: 200;
+	text-transform: uppercase;
+	color: #fff;
+	border-radius: 15px;
+	line-height: 3;
+	width: 180px;
+	margin: auto;
+}
+
+.scs-logo {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	height: 40px;
+}

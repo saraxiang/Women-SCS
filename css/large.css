@@ -1,0 +1,106 @@
+html {
+	/* 20px left for blue top padding, using 60px for mobile site to make room for hamburger icon */
+	background-position: 0px 20px; 
+}
+
+.padding-top {
+	height: 20px;
+}
+
+.col.padding-bottom {
+	/* background scooted down 20px (60px mobile) so that blue top bar could precede hexagon design, 
+	need to move bottom blue bar down to cover the extra white background (note position: relative
+	defined in style.css */
+	top: 20px;		
+}
+
+#main-nav li{
+	/* some extra left/right padding around nav options (About, Resources, etc) */
+	padding: 0px 30px;
+}
+
+/* positioning for wscs info (CMU logo, W@SCS, and mission) on desktop */
+.wscs-info {
+	position: relative;
+	top: 90px;
+	left: 90px;
+	width: 75%;
+}
+
+.wscs-info p {
+	margin-top: 8px;
+}
+
+/* "content-top" is upcoming dates section + wscs general info section (CMU logo, w@scs, mission) */
+
+.content-top {
+	height: 270px;
+}
+
+.cmu-logo {
+	height: 30px;
+}
+
+/* ------------------------- start css for dates ------------------------- */
+#dates {
+	text-align: right;
+	padding-right: 45px;
+}
+
+.event {
+  	padding: 10px 5px;
+  	margin-left: 85px;
+  	border-bottom: 1px solid #f4f4f4;
+}
+
+.event:last-child{
+	border-bottom: none;
+}
+
+.label {
+	display: none;
+}
+
+/* bottom border is used for desktop horizontal line, hr is used for mobile (manipulating positioning and
+    length of hr for desktop design was a struggle) so need to hide hr */
+.row .col hr {
+	display: none;
+}
+
+.section-divider {
+	display: none;
+}
+
+/* ------------------------- end css for dates ------------------------- */
+.image {
+	width: 100%;
+	height: 250px; /* featured image is larger, so this is overridden later */
+}
+
+.row.news-section {
+	/* featured news story image will be perfectly left aligned with smaller news story
+	image below it */
+	text-align: left; 
+	padding: 0px 40px;
+}
+
+.feature {
+	height: 350px;
+}
+
+.image.feature {
+	width: 60%;
+	height: 350px; /* featured image is longer than others :) */
+}
+
+.news.feature {
+	width: 39%; /* there's a small space between image + news div so widths 39% + 60% (image div) used to prevent stacking of the divs one on top of the other */
+	vertical-align: top; /* needed for featured news div to be vertically aligned with featured image div */
+}
+
+.content.feature {
+	/*TODO: current hacky way of making news content centered vertically*/
+	position: relative;
+	top: 88px;
+}
+
