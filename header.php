@@ -26,7 +26,7 @@
             $defaults = array(
               'menu_class'=>'right hide-on-med-and-down',
               'container'=> false,
-              'theme_locaiton' => 'primary-menu',
+              'theme_location' => 'primary-menu',
             ); 
             //details: https://developer.wordpress.org/reference/functions/wp_nav_menu/
             //container boolean determines whether wrapped in auto-generated div
@@ -40,7 +40,7 @@
               'menu_class'=>'side-nav',
               'menu_id' => 'mobile-nav',
               'container'=> false,
-              'theme_locaiton' => 'primary-menu',
+              'theme_location' => 'primary-menu',
             ); 
             wp_nav_menu($defaults);
          ?>

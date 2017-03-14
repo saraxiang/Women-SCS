@@ -2,15 +2,14 @@
 
 add_theme_support('menus');
 
-//tell Wordpress that menu exists
 function register_theme_menus() {
-	(
-		array(
-			'primary-menu' => __('Primary Menu')
-		)
-	);
-}
-
+  register_nav_menus(
+    array(
+      'primary-menu' => __( 'Primary WSCS Menu' ),
+     )
+   );
+ }
+ 
 //tell Wordpress to run this function upon initialization
 add_action('init', 'register_theme_menus');
 
