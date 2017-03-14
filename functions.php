@@ -21,17 +21,17 @@ function wscs_theme_styles() {
 	//the period concatenates the above ^^ to css/materialize.css etc
 	wp_enqueue_style('materialize_css', get_template_directory_uri() . '/css/materialize.min.css');
 	wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css');  
-	wp_enqueue_style('googlefont_css', 'https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet'); 
+	wp_enqueue_style('googlefont_css', 'https://fonts.googleapis.com/icon?family=Material+Icons'); 
 	//array() and false are default values; needed to fill last parameter with media query
-	wp_enqueue_style('materialize_css', get_template_directory_uri() . '/css/small.css', array(), false, '(max-width:992px)');  
-	wp_enqueue_style('materialize_css', get_template_directory_uri() . '/css/large.css', array(), false, '(min-width:993px)');  
+	wp_enqueue_style('small_css', get_template_directory_uri() . '/css/small.css', array(), false, '(max-width:992px)');  
+	wp_enqueue_style('large_css', get_template_directory_uri() . '/css/large.css', array(), false, '(min-width:993px)');  
 }
 
 //needed to tell wordpress when to enqueue the styles
 //wp_enqueue_scripts is a hook that tells Wordpress which CSS and JS files to load for a given page
-add_action('wp_enqueue_scripts', 'mc_theme_styles');
+add_action('wp_enqueue_scripts', 'wscs_theme_styles');
 
-function mc_theme_js() {
+function wscs_theme_js() {
 	//order here determines order of load on site
 	//wp_enqueue_script takes additional arguments of [array of dependents], fourth is [version (if want to set)]
 	//and [boolean: appear in footer]
@@ -39,6 +39,6 @@ function mc_theme_js() {
 	wp_enqueue_script('main_js', get_template_directory_uri() . '/js/app.js', array('jquery', 'materialize_js'), '', true);
 }
 
-add_action('wp_enqueue_scripts', 'mc_theme_js');
+add_action('wp_enqueue_scripts', 'wscs_theme_js');
 
 ?>

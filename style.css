@@ -1,5 +1,5 @@
 html {
-	background: url(../img/wscs_pattern.png) no-repeat;
+	background: url(img/wscs_pattern.png) no-repeat;
 	background-size: 400px;
 	color: #00294b;
 	font-family: 'Open Sans', sans-serif;
@@ -92,7 +92,7 @@ p {
 }
 
 .image {
-	background-image: url(../img/feature.jpeg);
+	background-image: url(img/feature.jpeg);
 	background-size: cover;
 }
 
