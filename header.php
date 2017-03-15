@@ -27,7 +27,7 @@
               'menu_class'=>'right hide-on-med-and-down',
               'container'=> false,
               'theme_location' => 'primary-menu',
-              'walker' => new wscs_materializecss_walker(),
+              'walker' => new wscs_materializecss_large_walker(),
             ); 
             //details: https://developer.wordpress.org/reference/functions/wp_nav_menu/
             //container boolean determines whether wrapped in auto-generated div
@@ -42,6 +42,7 @@
               'menu_id' => 'mobile-nav',
               'container'=> false,
               'theme_location' => 'primary-menu',
+              'walker' => new wscs_materializecss_small_walker(),
             ); 
             wp_nav_menu($defaults);
          ?>

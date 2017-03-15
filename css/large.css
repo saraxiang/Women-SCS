@@ -14,8 +14,9 @@ html {
 	top: 20px;		
 }
 
-#main-nav li{
+#menu-primary > li {
 	/* some extra left/right padding around nav options (About, Resources, etc) */
+	/* note: onliy selecting parents, not items in submenu */
 	padding: 0px 30px;
 }
 

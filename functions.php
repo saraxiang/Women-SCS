@@ -40,14 +40,19 @@ function wscs_theme_js() {
 
 add_action('wp_enqueue_scripts', 'wscs_theme_js');
 
-//Customizing menu output. See: http://www.kriesi.at/archives/improve-your-wordpress-navigation-menu-output
-class wscs_materializecss_walker extends Walker_Nav_Menu
+//Customizing menu output. See: http://www.kriesi.at/archives/improve-your-wordpress-navigation-menu-output 
+//Also see: https://developer.wordpress.org/reference/classes/walker_category/ (very helpful)
+//TODO: right now, we're assuming every parent has a child submenu (in Desktop, all parents have the triangle to their left
+//and in responsive every parent is structured assuming it has children)
+class wscs_materializecss_large_walker extends Walker_Nav_Menu
 {
 	// modified to add id corresponding to parent (child-of-CURRENTID) in every child ul, 
 	// in every parent set data-activates to corresponding child submenu id 
 
 	//we use a shared variable to keep track of who the parent was
 	private $wscsCurItem;
+
+  //Note: The start level refers to the start of a sub-level. Meaning that the output does not effect the initial wrapping around the whole navigation, but only the list of childerns children (https://developer.wordpress.org/reference/classes/walker/start_lvl/)
 	function start_lvl(&$output, $depth) 
 	{
 	   $indent = str_repeat("\t", $depth);
@@ -101,6 +106,67 @@ class wscs_materializecss_walker extends Walker_Nav_Menu
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
    	}
+}
+
+class wscs_materializecss_small_walker extends Walker_Nav_Menu
+{
+  //Note: The start level refers to the start of a sub-level. Meaning that the output does not effect the initial wrapping around the whole navigation, but only the list of childerns children (https://developer.wordpress.org/reference/classes/walker/start_lvl/)
+  function start_lvl(&$output, $depth) 
+  {
+     $indent = str_repeat("\t", $depth);
+     //collapsible body tag added
+     $output .= "\n" . $indent . '<div class="collapsible-body"><ul>';
+  }
+
+  function end_lvl( &$output, $depth = 0, $args = array() ) 
+  {
+    $indent = str_repeat("\t", $depth);
+    // These close the tags that were added
+    $output .= "$indent</ul></div></ul></li>\n";
+  }
+
+
+    function start_el(&$output, $item, $depth, $args)
+    {
+       global $wp_query;
+       $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+       $class_names = $value = '';
+
+       $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+       $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+       $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+       // These two lines add the necessary stuff for collapsible (materialize)
+       $output .= $indent . '<li class="no-padding"> <ul class="collapsible collapsible-accordion">';
+       $output .= '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+
+       $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+       $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+       $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+       $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+
+       $prepend = '<strong>';
+       $append = '</strong>';
+       $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
+
+       if($depth != 0)
+       {
+                 $description = $append = $prepend = "";
+       }
+
+        $item_output = $args->before;
+        // collapsible header tag added
+        $item_output .= '<a class="collapsible-header"' . $attributes .'>';
+        $item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+        $item_output .= $description.$args->link_after;
+        $item_output .= '</a>';
+        $item_output .= $args->after;
+
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
 }
 
 ?>
