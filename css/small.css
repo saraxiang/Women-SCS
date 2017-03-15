@@ -85,6 +85,20 @@ hr {
 	text-align: center;
 }
 
+.hide-on-small-screens {
+	display: none;
+}
+
+.less-margin {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.wscs-page-content {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
 h3 {
 	letter-spacing: 1px;
 	font-size: 1.3rem;
@@ -106,4 +120,12 @@ h4 {
 	h2 {
 		font-size: 1.7rem;
 	}
+}
+
+.page-title {
+	font-weight: 200;
+	letter-spacing: 3.8px;
+	font-size: 2.5rem;
+	margin: 0px;
+	line-height: 35px;
 }

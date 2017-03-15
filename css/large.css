@@ -28,12 +28,18 @@ html {
 	width: 75%;
 }
 
+/* want this left aligned with wscs-info, but not scooted down */
+.wscs-page-content {
+	position: relative;
+	left: 100.875px;
+	width: 75%;
+}
+
 .wscs-info p {
 	margin-top: 8px;
 }
 
 /* "content-top" is upcoming dates section + wscs general info section (CMU logo, w@scs, mission) */
-
 .content-top {
 	height: 270px;
 }
@@ -105,3 +111,9 @@ html {
 	top: 88px;
 }
 
+.page-title {
+	font-weight: 200;
+	letter-spacing: 3.8px;
+	font-size: 3.5rem;
+	margin: 0px;
+}
