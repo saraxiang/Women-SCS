@@ -1,7 +1,19 @@
-<?php get_header(); ?>
+<?php get_header(); 
+    date_default_timezone_set('EST');
+    $currentTime = date('c');
+    // 3 query parameters set: 
+    // maxResults = 3
+    // timeMin = currentTime
+    // key = API key (obtain from console.developers.google.com - navigate to correct project > create credentials > API key)
+    $calendarEventsRequest = wp_remote_get( 'https://www.googleapis.com/calendar/v3/calendars/xiangyiqisara@gmail.com/events?key=AIzaSyDDIMbO-_T-5cklnZU1-nnZAavWox67-ds&maxResults=3&timeMin=' . $currentTime);
+    if ( is_array( $calendarEventsRequest ) ) {
+      $calendarEvents = $calendarEventsRequest['body']; // use the content
+    } else {
+            $response = "ERROR";
+    }
+?>
 
 <main>
-
 	<div class="row content-top">
 
       <!-- start W@SCS general info (CMU logo, W@SCS, mission) -->
@@ -19,26 +31,19 @@
       <!-- start upcoming events info -->
       <div class="col s12 l4" id="dates">
         <div class="label"> <h2>Upcoming <br> Events</h2> </div>
-        <!-- Event 1 / 3 -->
-        <div class="event">
-          <div class="info">Mon, Feb 8</div>
-          <div class="name"><b>Faculty Student Dinner</b></div>
-          <div class="info">Cool Restaurant</div>
-        </div>
-        <hr>
-        <!-- Event 2 / 3 -->
-        <div class="event">
-          <div class="info">Wed, Mar 9</div>
-          <div class="name"><b>AirBnb Dinner</b></div>
-          <div class="info">Another Cool Place</div>
-        </div>
-        <hr>
-        <!-- Event 3 / 3 -->
-        <div class="event">
-          <div class="info">Thurs, Dec 11</div>
-          <div class="name"><b>Women@SCS Meeting</b></div>
-          <div class="info">GHC 4412</div>
-        </div>
+            <?php
+	        	$json = json_decode($calendarEvents, true);
+	        	// var_dump($json["items"]);
+	        	foreach ($json["items"] as $event) {
+	        		$dateString = $event["start"]["date"] ? $event["start"]["date"] : $event["start"]["dateTime"];
+	        		echo 
+	        			'<div class="event">
+	        				<div class="info">' . $dateString . '</div>
+	        				<div class="name"><b>' . $event["summary"] . '</b></div>
+	        				<div class="info">' . $event["location"] . '</div>
+	        			</div>';
+	        	}
+	        ?>
       </div>
       <!-- end upcoming events info -->
 
@@ -89,4 +94,3 @@
 </main>
 
 <?php get_footer(); ?>
-
