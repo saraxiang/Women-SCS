@@ -8,8 +8,6 @@
     $calendarEventsRequest = wp_remote_get( 'https://www.googleapis.com/calendar/v3/calendars/xiangyiqisara@gmail.com/events?key=AIzaSyDDIMbO-_T-5cklnZU1-nnZAavWox67-ds&maxResults=3&timeMin=' . $currentTime);
     if ( is_array( $calendarEventsRequest ) ) {
       $calendarEvents = $calendarEventsRequest['body']; // use the content
-    } else {
-            $response = "ERROR";
     }
 ?>
 
@@ -36,9 +34,11 @@
 	        	// var_dump($json["items"]);
 	        	foreach ($json["items"] as $event) {
 	        		$dateString = $event["start"]["date"] ? $event["start"]["date"] : $event["start"]["dateTime"];
+	        		$date = date_create($dateString);
+	        		$formattedDate = date_format($date,"m/d/y");
 	        		echo 
 	        			'<div class="event">
-	        				<div class="info">' . $dateString . '</div>
+	        				<div class="info">' . $formattedDate . '</div>
 	        				<div class="name"><b>' . $event["summary"] . '</b></div>
 	        				<div class="info">' . $event["location"] . '</div>
 	        			</div>';
