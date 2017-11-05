@@ -1,7 +1,7 @@
-<?php get_header(); 
+<?php get_header();
     date_default_timezone_set('EST');
     $currentTime = date('c');
-    // 3 query parameters set: 
+    // 3 query parameters set:
     // maxResults = 3
     // timeMin = currentTime
     // key = API key (obtain from console.developers.google.com - navigate to correct project > create credentials > API key)
@@ -19,7 +19,7 @@
         <div class="wscs-info">
           <img class="cmu-logo" src="<?php echo get_template_directory_uri() . '/img/cmu_wordmark.png';?>">
         </div>
-        <h1 class="wscs-info">WOMEN<b>@SCS</b></h1> 
+        <h1 class="wscs-info">WOMEN<b>@SCS</b></h1>
         <p class="wscs-info"> The Women@SCS mission is to create, encourage, and support academic, social, and professional opportunities for women in computer science and to promote the breadth of the field and its diverse community. </p>
       </div>
       <!-- end W@SCS general info (CMU logo, W@SCS, mission) -->
@@ -36,7 +36,7 @@
 	        		$dateString = $event["start"]["date"] ? $event["start"]["date"] : $event["start"]["dateTime"];
 	        		$date = date_create($dateString);
 	        		$formattedDate = date_format($date,"m/d/y");
-	        		echo 
+	        		echo
 	        			'<div class="event">
 	        				<div class="info">' . $formattedDate . '</div>
 	        				<div class="name"><b>' . $event["summary"] . '</b></div>
@@ -61,11 +61,12 @@
 			        <!-- TODO: deal with how much content is outputted here, and making sure it's centered; problem is need vertical-align: top to keep news div in line with image div -->
 			        <div class="image feature"></div>
 		        	<div class="news feature">
-		          		<div class="content feature">
-							<h3><?php the_title() ?></h3>
-							<h4>by women@scs</h4>
-							<p class="description"><?php the_content() ?></p>
-		          			<div class="button">Read Full Story</div>
+                <div class="content feature">
+                  <h3><?php the_title() ?></h3>
+                  <h4>by women@scs</h4>
+                  <p class="description"><?php the_content() ?></p>
+                    <?php
+                      echo sprintf('<a class="button" href="%s" rel="bookmark">Read Full Story</a></h2>', esc_url(get_permalink())); ?>
 		         		</div>
 		        	</div>
 		      	</div>
