@@ -66,7 +66,10 @@
                   <h4>by women@scs</h4>
                   <p class="description"><?php the_content() ?></p>
                     <?php
-                      echo sprintf('<a class="button" href="%s" rel="bookmark">Read Full Story</a></h2>', esc_url(get_permalink())); ?>
+                      echo sprintf(
+                        '<a class="button" href="%s" rel="bookmark">
+                           Read Full Story
+                         </a>', esc_url(get_permalink())); ?>
 		         		</div>
 		        	</div>
 		      	</div>
@@ -76,14 +79,18 @@
 			<?php $first = false; ?>
 	    <?php else: ?>
 		    <div class="col s12 l4 post">
-		    	<div class="image"></div>
-		        <div class="news">
-		        	<div class="content">
-		            	<h5><?php the_title() ?></h5>
-		            	<h6>by women@scs</h6>
-		          	</div>
-		        </div>
-		      </div>
+          <?php
+              echo sprintf(
+                '<a class="post-link" href="%s">
+                  <div class="image"></div>
+                  <div class="news">
+                    <div class="content">
+                        <h5>%s</h5>
+                        <h6>by women@scs</h6>
+                      </div>
+                  </div>
+                </a>', esc_url(get_permalink()), the_title('','',false)); ?>
+		    </div>
 	    <?php endif; ?>
 	<?php endwhile; else : ?>
 
