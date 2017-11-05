@@ -57,6 +57,10 @@ p {
 	color: #46524e;
 }
 
+iframe {
+	max-width: 100%;
+}
+
 #dates {
 	font-size: 14px;
 }
