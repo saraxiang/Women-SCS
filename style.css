@@ -5,8 +5,8 @@ html {
 	font-family: 'Open Sans', sans-serif;
 }
 
-/* h1 used for W@SCS title, h2 for mobile headings, h3 for featured news story title, 
-h4 for featured news story author, p for mission + featured news story description, 
+/* h1 used for W@SCS title, h2 for mobile headings, h3 for featured news story title,
+h4 for featured news story author, p for mission + featured news story description,
 h5 for regular news story title, h6 for regular news story author */
 
 h1, h2, h4, h6 {
@@ -57,6 +57,10 @@ p {
 	color: #46524e;
 }
 
+iframe {
+	max-width: 100%;
+}
+
 #dates {
 	font-size: 14px;
 }
@@ -68,7 +72,7 @@ p {
 .col.padding-bottom {
 	background-color: #00294b;
 	height: 80px;
-	position: relative;		
+	position: relative;
 }
 
 #main-nav {
@@ -83,7 +87,7 @@ p {
 
 .image, .news {
 	display: inline-block;
-	text-align: center; 
+	text-align: center;
 }
 
 .news {
@@ -104,8 +108,19 @@ p {
 	color: #fff;
 	border-radius: 15px;
 	line-height: 3;
-	width: 180px;
-	margin: auto;
+  padding: 16px 24px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #00569d;
+}
+
+.post-link {
+  color: #00294b;
 }
 
 .scs-logo {
