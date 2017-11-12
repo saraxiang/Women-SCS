@@ -1,6 +1,7 @@
 <?php
 
 add_theme_support('menus');
+add_theme_support( 'post-thumbnails' );
 
 function register_theme_menus() {
   register_nav_menus(
@@ -9,21 +10,21 @@ function register_theme_menus() {
      )
    );
  }
- 
+
 //tell Wordpress to run this function upon initialization
 add_action('init', 'register_theme_menus');
 
-function wscs_theme_styles() { 
+function wscs_theme_styles() {
 	//wscs namespacing (to prevent conflicting names with future plugins etc)
 	//this function allows us to link to style sheets
 	//get_template_directory_uri() gets the path to the folder containing this file (functions.php)
 	//the period concatenates the above ^^ to css/materialize.css etc
 	wp_enqueue_style('materialize_css', get_template_directory_uri() . '/css/materialize.min.css');
-	wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css');  
-	wp_enqueue_style('googlefont_css', 'https://fonts.googleapis.com/icon?family=Material+Icons'); 
+	wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css');
+	wp_enqueue_style('googlefont_css', 'https://fonts.googleapis.com/icon?family=Material+Icons');
 	//array() and false are default values; needed to fill last parameter with media query
-	wp_enqueue_style('small_css', get_template_directory_uri() . '/css/small.css', array(), false, '(max-width:992px)');  
-	wp_enqueue_style('large_css', get_template_directory_uri() . '/css/large.css', array(), false, '(min-width:993px)');  
+	wp_enqueue_style('small_css', get_template_directory_uri() . '/css/small.css', array(), false, '(max-width:992px)');
+	wp_enqueue_style('large_css', get_template_directory_uri() . '/css/large.css', array(), false, '(min-width:993px)');
 }
 
 //needed to tell wordpress when to enqueue the styles
@@ -40,20 +41,20 @@ function wscs_theme_js() {
 
 add_action('wp_enqueue_scripts', 'wscs_theme_js');
 
-//Customizing menu output. See: http://www.kriesi.at/archives/improve-your-wordpress-navigation-menu-output 
+//Customizing menu output. See: http://www.kriesi.at/archives/improve-your-wordpress-navigation-menu-output
 //Also see: https://developer.wordpress.org/reference/classes/walker_category/ (very helpful)
 //TODO: right now, we're assuming every parent has a child submenu (in Desktop, all parents have the triangle to their left
 //and in responsive every parent is structured assuming it has children)
 class wscs_materializecss_large_walker extends Walker_Nav_Menu
 {
-	// modified to add id corresponding to parent (child-of-CURRENTID) in every child ul, 
-	// in every parent set data-activates to corresponding child submenu id 
+	// modified to add id corresponding to parent (child-of-CURRENTID) in every child ul,
+	// in every parent set data-activates to corresponding child submenu id
 
 	//we use a shared variable to keep track of who the parent was
 	private $wscsCurItem;
 
   //Note: The start level refers to the start of a sub-level. Meaning that the output does not effect the initial wrapping around the whole navigation, but only the list of childerns children (https://developer.wordpress.org/reference/classes/walker/start_lvl/)
-	function start_lvl(&$output, $depth) 
+	function start_lvl(&$output, $depth)
 	{
 	   $indent = str_repeat("\t", $depth);
 
@@ -111,14 +112,14 @@ class wscs_materializecss_large_walker extends Walker_Nav_Menu
 class wscs_materializecss_small_walker extends Walker_Nav_Menu
 {
   //Note: The start level refers to the start of a sub-level. Meaning that the output does not effect the initial wrapping around the whole navigation, but only the list of childerns children (https://developer.wordpress.org/reference/classes/walker/start_lvl/)
-  function start_lvl(&$output, $depth) 
+  function start_lvl(&$output, $depth)
   {
      $indent = str_repeat("\t", $depth);
      //collapsible body tag added
      $output .= "\n" . $indent . '<div class="collapsible-body"><ul>';
   }
 
-  function end_lvl( &$output, $depth = 0, $args = array() ) 
+  function end_lvl( &$output, $depth = 0, $args = array() )
   {
     $indent = str_repeat("\t", $depth);
     // These close the tags that were added
@@ -170,12 +171,12 @@ class wscs_materializecss_small_walker extends Walker_Nav_Menu
 }
 
 function envira_gallery_image_titles( $output, $id, $item, $data, $i ) {
-  
+
   // IDs of galleries to display titles on
   $galleriesToShowTitles = array(
     79
   );
-  
+
   // Check if we need to display titles on this gallery
   if ( !in_array( $data['id'], $galleriesToShowTitles ) ) {
     return $output;
@@ -186,8 +187,15 @@ function envira_gallery_image_titles( $output, $id, $item, $data, $i ) {
   }
 
   return $output;
-  
+
 }
 add_action( 'envira_gallery_output_after_link', 'envira_gallery_image_titles', 10, 5 );?>
+
+?>
+
+function modify_read_more_link() {
+    return '<a class="button" href="' . get_permalink() . '">Read Full Story</a>';
+}
+add_filter( 'the_content_more_link', 'modify_read_more_link' );
 
 ?>
