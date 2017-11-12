@@ -31,11 +31,20 @@
         <div class="label"> <h2>Upcoming <br> Events</h2> </div>
             <?php
 	        	$json = json_decode($calendarEvents, true);
-	        	// var_dump($json["items"]);
-	        	foreach ($json["items"] as $event) {
+            // var_dump($json["items"]);
+	        	
+            usort($json["items"], function($a, $b) { //Sort the array using a user defined function
+              $dateStringA = $a["start"]["date"] ? $a["start"]["date"] : $a["start"]["dateTime"];
+              $dateStringB = $b["start"]["date"] ? $b["start"]["date"] : $b["start"]["dateTime"];
+              $currSeconds = strtotime(time());
+              return strtotime($dateStringA) - $currSeconds < strtotime($dateStringB) - $currSeconds ? -1 : 1; //Compare the scores
+            });
+
+            // var_dump($json["items"]);
+            foreach ($json["items"] as $event) {
 	        		$dateString = $event["start"]["date"] ? $event["start"]["date"] : $event["start"]["dateTime"];
 	        		$date = date_create($dateString);
-	        		$formattedDate = date_format($date,"m/d/y");
+	        		$formattedDate = date_format($date,"l, M j");
 	        		echo
 	        			'<div class="event">
 	        				<div class="info">' . $formattedDate . '</div>
