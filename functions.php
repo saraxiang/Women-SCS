@@ -169,4 +169,25 @@ class wscs_materializecss_small_walker extends Walker_Nav_Menu
     }
 }
 
+function envira_gallery_image_titles( $output, $id, $item, $data, $i ) {
+  
+  // IDs of galleries to display titles on
+  $galleriesToShowTitles = array(
+    79
+  );
+  
+  // Check if we need to display titles on this gallery
+  if ( !in_array( $data['id'], $galleriesToShowTitles ) ) {
+    return $output;
+  }
+
+  if ( isset( $item['title'] )) {
+    $output .= '<h3 style="padding-top: 0.25rem; text-align: center; display: block; letter-spacing: 0.5px; font-size: 1.25rem;">' . $item['title'] . '</h3>';
+  }
+
+  return $output;
+  
+}
+add_action( 'envira_gallery_output_after_link', 'envira_gallery_image_titles', 10, 5 );?>
+
 ?>

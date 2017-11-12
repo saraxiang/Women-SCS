@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Women@SCS</title>
     <?php wp_head(); ?>
+	<link rel="icon" href="<?php echo get_template_directory_uri() . '/img/wscs_logo2.png';?>">
   </head>
 
   <body <?php body_class(); ?>>
