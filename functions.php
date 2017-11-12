@@ -189,9 +189,7 @@ function envira_gallery_image_titles( $output, $id, $item, $data, $i ) {
   return $output;
 
 }
-add_action( 'envira_gallery_output_after_link', 'envira_gallery_image_titles', 10, 5 );?>
-
-?>
+add_action( 'envira_gallery_output_after_link', 'envira_gallery_image_titles', 10, 5 );
 
 function modify_read_more_link() {
     return '<a class="button" href="' . get_permalink() . '">Read Full Story</a>';
