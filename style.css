@@ -57,6 +57,16 @@ p {
 	color: #46524e;
 }
 
+h3.title {
+	padding-top: 30px;
+	text-align: center;
+	display: block;
+	letter-spacing: 1px;
+	font-size: 3.5rem;
+	margin: 7px;
+	font-weight: 600;
+}
+
 iframe {
 	max-width: 100%;
 }
