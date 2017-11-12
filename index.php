@@ -61,44 +61,66 @@
 
 	<div class="col s12 section-divider"></div>
 
-	<?php $first = true; ?>
+  <?php
+    $postctr = 0;
+    global $more;
+  ?>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<?php if ( $first ): ?>
+		<?php if ( $postctr === 0 ): ?>
 			<div class="row news-section">
 		    	<div class="label"> <h2>News</h2> </div>
 		      	<div class="col s12 post">
 			        <!-- TODO: deal with how much content is outputted here, and making sure it's centered; problem is need vertical-align: top to keep news div in line with image div -->
-			        <div class="image feature"></div>
+			        <!--div class="image feature"></div-->
+              <?php
+                if ( has_post_thumbnail() ) {
+                  the_post_thumbnail(
+                    'post-thumbnail', ['class' => 'image feature', 'title' => 'Feature Post Thumbnail']);
+                }
+                else {
+                    echo '<img class="image feature" src="' . get_bloginfo( 'stylesheet_directory' )
+                        . '/img/feature.jpeg" />';
+                }
+              ?>
 		        	<div class="news feature">
                 <div class="content feature">
                   <h3><?php the_title() ?></h3>
                   <h4>by women@scs</h4>
-                  <p class="description"><?php the_content() ?></p>
+                  <p class="description">
                     <?php
-                      echo sprintf(
-                        '<a class="button" href="%s" rel="bookmark">
-                           Read Full Story
-                         </a>', esc_url(get_permalink())); ?>
+                      $more = 0;
+                      the_content();
+                    ?>
+                  </p>
 		         		</div>
 		        	</div>
 		      	</div>
 		    </div>
 		    <!-- TODO: hacky way of starting next row -->
 		    <div class="row news-section">
-			<?php $first = false; ?>
-	    <?php else: ?>
+			<?php $postctr = $postctr + 1; ?>
+	    <?php elseif ($postctr < 4): ?>
 		    <div class="col s12 l4 post">
           <?php
               echo sprintf(
-                '<a class="post-link" href="%s">
-                  <div class="image"></div>
-                  <div class="news">
+                '<a class="post-link" href="%s">', esc_url(get_permalink()));
+              if ( has_post_thumbnail() ) {
+                  the_post_thumbnail();
+              }
+              else {
+                  echo '<img class="image" src="' . get_bloginfo( 'stylesheet_directory' )
+                      . '/img/feature.jpeg" />';
+              }
+              echo sprintf(
+                '<div class="news">
                     <div class="content">
                         <h5>%s</h5>
                         <h6>by women@scs</h6>
                       </div>
                   </div>
-                </a>', esc_url(get_permalink()), the_title('','',false)); ?>
+                  </a>', the_title('','',false));
+              $postctr = $postctr + 1;
+           ?>
 		    </div>
 	    <?php endif; ?>
 	<?php endwhile; else : ?>
