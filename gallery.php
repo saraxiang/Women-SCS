@@ -1,5 +1,5 @@
 <?php /* Template Name: Photo Gallery */ ?>
-
+<head><title>Women@SCS Photos</title></head>
 <?php get_header(); 
     date_default_timezone_set('EST');
     $currentTime = date('c');
