@@ -1,6 +1,6 @@
 html {
 	/* 20px left for blue top padding, using 60px for mobile site to make room for hamburger icon */
-	background-position: 0px 20px; 
+	background-position: 0px 20px;
 }
 
 .padding-top {
@@ -8,10 +8,10 @@ html {
 }
 
 .col.padding-bottom {
-	/* background scooted down 20px (60px mobile) so that blue top bar could precede hexagon design, 
+	/* background scooted down 20px (60px mobile) so that blue top bar could precede hexagon design,
 	need to move bottom blue bar down to cover the extra white background (note position: relative
 	defined in style.css */
-	top: 20px;		
+	top: 20px;
 }
 
 #menu-primary > li {
@@ -87,7 +87,7 @@ html {
 .row.news-section {
 	/* featured news story image will be perfectly left aligned with smaller news story
 	image below it */
-	text-align: left; 
+	text-align: left;
 	padding: 0px 40px;
 }
 

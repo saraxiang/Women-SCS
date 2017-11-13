@@ -57,16 +57,6 @@ p {
 	color: #46524e;
 }
 
-h3.title {
-	padding-top: 30px;
-	text-align: center;
-	display: block;
-	letter-spacing: 1px;
-	font-size: 3.5rem;
-	margin: 7px;
-	font-weight: 600;
-}
-
 iframe {
 	max-width: 100%;
 }
@@ -105,11 +95,6 @@ iframe {
   	width: 100%;
 }
 
-.image {
-	background-image: url(img/feature.jpeg);
-	background-size: cover;
-}
-
 .button {
 	background-color: #00294b;
 	font-size: .9rem;
@@ -118,7 +103,9 @@ iframe {
 	color: #fff;
 	border-radius: 15px;
 	line-height: 3;
-  padding: 16px 24px;
+  padding: 6px 24px;
+  margin-top: 24px;
+  display: inline-block
 }
 
 .button:hover {
