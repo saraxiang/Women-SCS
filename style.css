@@ -90,6 +90,12 @@ iframe {
 	text-align: center;
 }
 
+.image {
+  max-height: 400px;
+  max-width: 300px;
+  width: auto;
+}
+
 .news {
   	padding: 0px 10px;
   	width: 100%;
